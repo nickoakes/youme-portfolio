@@ -1,0 +1,25 @@
+{
+  "name": "youme-portfolio-api",
+  "version": "1.0.0",
+  "description": "REST API for youme-portfolio",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./app.js",
+    "seed": "node ./seed/database.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nicholas Oakes",
+  "license": "ISC",
+  "dependencies": {
+    "basic-auth": "^2.0.1",
+    "bcrypt": "^3.0.6",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-validator": "^5.3.1",
+    "nodemon": "^1.19.1",
+    "sequelize": "^5.8.7",
+    "sequelize-cli": "^5.4.0",
+    "sqlite3": "^4.0.8"
+  }
+}

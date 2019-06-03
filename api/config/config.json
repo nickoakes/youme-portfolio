@@ -1,0 +1,14 @@
+{
+  "development": {
+    "storage": "./youme-db.db",
+    "dialect": "sqlite"
+  },
+  "test": {
+    "storage": "./youme-db.db",
+    "dialect": "sqlite"
+  },
+  "production": {
+    "storage": "./youme-db.db",
+    "dialect": "sqlite"
+  }
+}
