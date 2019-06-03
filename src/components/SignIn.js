@@ -29,6 +29,7 @@ class SignIn extends Component {
             <Header username={this.props.username}/>
                 <div className="container">
                 <h1>Administrator Sign In</h1>
+                {this.props.message ? <h2>{this.props.message}</h2> : ""}
                 {this.props.username ? <h2>Sign-in successful!</h2> :
                 <form onChange={this.handleChange}>
                     <div className="form-group">

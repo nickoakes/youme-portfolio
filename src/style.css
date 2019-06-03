@@ -60,6 +60,15 @@ p {
 
 a {
     font-size: 30px;
+    cursor: pointer;
+}
+
+td, th {
+    font-size: 20px;
+}
+
+.modal-dialog {
+    overflow-wrap: break-word;
 }
 
 #bootstrap-overrides .form-control {

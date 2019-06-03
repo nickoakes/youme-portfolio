@@ -13,6 +13,7 @@ const Header = (props) => {
             <li className="nav-item"><NavLink exact to="/services" activeClassName="current" className="nav-link">Services</NavLink></li>
             <li className="nav-item"><NavLink exact to="/projects" activeClassName="current" className="nav-link">Projects</NavLink></li>
             <li className="nav-item"><NavLink exact to="/contact-us" activeClassName="current" className="nav-link">Contact us</NavLink></li>
+            {props.username ? <li className="nav-item"><NavLink exact to="/messages" activeClassName="current" className="nav-link">Messages</NavLink></li> : ""}
         </ul>
         <ul className="nav navbar-nav right">
         {props.username ? <li className="nav-item"><NavLink exact to="/signout" activeClassName="current">Sign Out</NavLink></li> :
