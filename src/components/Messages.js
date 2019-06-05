@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {withRouter} from 'react-router-dom';
 
 import Header from './Header';
 import axios from 'axios';
@@ -7,7 +8,8 @@ class Messages extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            messages: []
+            messages: [],
+            messageDeleted: ""
         };
     }
 
@@ -20,6 +22,23 @@ class Messages extends Component {
         });
     }
 
+    deleteMessage = (id) => {
+        let messageId = id
+        axios.delete(`http://localhost:5000/api/messages/${id}`)
+        .then(res => {
+            console.log(res.status)
+            this.props.history.push('/messages')
+        })
+        .then(() => {
+            this.setState(prevState => {
+                return {
+                ...prevState,
+                messageDeleted: messageId
+                };
+            });
+        })
+    }
+
     createMessageElements = () => {
         let messages = this.state.messages.map(
             message => {
@@ -30,13 +49,18 @@ class Messages extends Component {
                     truncatedMessage = message.message
                 }
                 return(
-                <React.Fragment>
+                <React.Fragment key={"ml-" + message.id}>
                     <tr>
                         <td>{message.senderName}</td>
                         <td>{message.senderEmail}</td>
-                        <a data-toggle="modal" data-target={"#message-" + message.id}>
-                        <td>{truncatedMessage}</td>
-                        </a>
+                        
+                        <td><a data-toggle="modal" data-target={"#message-" + message.id}>{truncatedMessage}</a></td>
+                        <td>
+                        {this.state.messageDeleted === message.id ? <h3>Message deleted</h3> :
+                            <button type="button" className="btn btn-default" onClick={() => this.deleteMessage(message.id)}>
+                                Delete
+                            </button>}
+                        </td>
                     </tr>
                 </React.Fragment>
                 )
@@ -49,7 +73,7 @@ class Messages extends Component {
         let modals = this.state.messages.map(
             message => {
                 return(
-                    <div id={"message-" + message.id} className="modal fade" role="dialog">
+                    <div id={"message-" + message.id} key={"modal-" + message.id} className="modal fade" role="dialog">
                         <div className="modal-dialog">
                             <div className="modal-content">
                             <div className="modal-header">
@@ -98,4 +122,4 @@ class Messages extends Component {
     }
 }
 
-export default Messages
+export default withRouter(Messages)

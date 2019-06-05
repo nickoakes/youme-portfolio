@@ -42,7 +42,7 @@ class Projects extends Component {
     createProjectPanels = () => {
         let projectPanels = this.state.projects.map(project => {
         return(
-        <React.Fragment>
+        <React.Fragment key={project.id}>
         <div className="col-sm-4">
             <div className="panel panel-default">
                 <div className="panel-heading">

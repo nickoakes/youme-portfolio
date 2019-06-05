@@ -242,6 +242,13 @@ app.get('/api/messages', (req, res) => {
   });
 });
 
+// delete message
+
+app.delete('/api/messages/:id', (req, res) => {
+  Messages.destroy({where: {id: req.params.id}})
+  .then(res.status(204));
+});
+
   // set port
 app.set('port', process.env.PORT || 5000);
 
